@@ -2,6 +2,301 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Global tokens */
+:root {
+  --white: #FFFFFF;
+  --purple: #AC93FA;
+  --blue: #66A9FA;
+  --accent: #FF8A3C; /* used for profile frame border to match mock */
+
+  --radius: 9999px;
+  --container: 1200px;
+
+  /* Hero spacing tokens */
+  --hero-gap-mobile: 1.5rem;
+  --hero-gap-desktop: 2rem;
+  --hero-button-gap-mobile: 1.5rem;
+  --hero-button-gap-desktop: 9.375rem; /* 150px */
+  --hero-align-pras-mobile: 0;
+  --hero-align-pras-desktop: 3.2ch;
+  --hero-align-sharma-mobile: 0;
+  --hero-align-sharma-desktop: 14ch;
+
+  /* Replace with a real @import/@font-face for alan-sans if needed */
+  --ff: 'alan-sans', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+}
+
+/* Global font family */
+* {
+  font-family: var(--ff);
+}
+
+/* Global color utility classes */
+.text-primary { color: var(--white); }
+.text-purple { color: var(--purple); }
+.text-blue { color: var(--blue); }
+.bg-primary { background-color: var(--white); }
+.bg-purple { background-color: var(--purple); }
+.bg-blue { background-color: var(--blue); }
+
+.border-purple { border-color: var(--purple); }
+.border-blue { border-color: var(--blue); }
+
+/* Layout helpers */
+.container-custom {
+  max-width: var(--container);
+  margin: 0 auto;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  width: 100%;
+}
+
+.section-padding {
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+}
+
+/* Hero section specific padding */
+.hero-section {
+  padding-top: 10rem;
+  padding-bottom: 4rem;
+}
+/* Buttons: default filled purple as in hero mock */
+.btn {
+  display: inline-block;
+  padding: 0.75rem 1.25rem;
+  border-radius: 0.75rem;
+  border: 2px solid transparent;
+  color: var(--white);
+  background: var(--purple);
+  transition: background-color 200ms ease, color 200ms ease, border-color 200ms ease, transform 150ms ease;
+  font-weight: 500;
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+}
+
+/* Hover to blue for both buttons */
+.btn-primary:hover,
+.btn-secondary:hover {
+  background-color: var(--blue);
+  border-color: var(--blue);
+  color: var(--white);
+}
+/* Social icon: unified size/shape with brand hover */
+.social-icon {
+  width: 3rem;
+  height: 3rem;
+  border-radius: var(--radius);
+  border: 2px solid var(--purple);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--purple);
+  background: transparent;
+  transition: background-color 200ms ease, color 200ms ease, border-color 200ms ease, transform 150ms ease;
+}
+
+.social-icon:hover {
+  background-color: var(--purple);
+  border-color: var(--purple);
+  color: var(--white);
+  transform: translateY(-1px);
+}
+.social-icon svg {
+  width: 1.5rem;
+  height: 1.5rem;
+  display: block;
+}
+
+/* Lightning + profile animations */
+@keyframes lightning {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.8; transform: scale(1.06); }
+}
+.lightning-animation { animation: lightning 2s infinite; }
+
+@keyframes profileGlow {
+  0%, 100% { box-shadow: 0 0 22px rgba(172,147,250,0.45); }
+  50% { box-shadow: 0 0 32px rgba(102,169,250,0.65); }
+}
+
+/* Profile frame styled to match screenshot: white circle, orange border, subtle top shadow */
+.profile-frame {
+  width: 18rem;
+  height: 18rem;
+  border-radius: 50%;
+  background: var(--white);
+  border: none;
+  box-shadow: 0 8px 18px rgba(0,0,0,0.28);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.profile-frame:hover {
+  border: 8px solid var(--accent);
+  box-shadow: 0 0 25px rgba(255, 138, 60, 0.6), 0 8px 18px rgba(0,0,0,0.28);
+  transform: scale(1.05);
+}
+
+.profile-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+/* Skills logos row */
+.skills-logos {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: 18px;
+  align-items: center;
+  justify-items: center;
+  max-width: 980px;
+  margin: 0 auto;
+}
+
+@media (max-width: 1023px) {
+  .skills-logos {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: 14px;
+  }
+}
+
+.skill-logo {
+  width: 40px;
+  height: 40px;
+  opacity: 0.9;
+  transition: transform 200ms ease, opacity 200ms ease, filter 200ms ease;
+  filter: grayscale(15%);
+}
+.skill-logo:hover {
+  transform: translateY(-3px) scale(1.07);
+  opacity: 1;
+  filter: none;
+}
+
+/* Make logos with dark icons readable on black bg */
+.logo-white-bg {
+  background: #fff;
+  border-radius: 8px;
+  padding: 6px 8px;
+}
+
+/* Hero type helpers for precise alignment */
+.hero-hi {
+  font-size: 1.125rem;
+  line-height: 1.5rem;
+  opacity: 0.8;
+}
+.hero-title {
+  font-weight: 800;
+  line-height: 1.05;
+  margin: 0;
+}
+.hero-role {
+  color: var(--blue);
+  font-weight: 600;
+  margin: 0;
+}
+
+/* Hero layout */
+.hero-buttons {
+  display: flex;
+  gap: var(--hero-button-gap-desktop);
+  justify-content: flex-start;
+  margin-top: 0.5rem;
+}
+
+@media (max-width: 1023px) {
+  .hero-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--hero-gap-mobile);
+  }
+
+  .hero-content {
+    text-align: center;
+    align-items: center;
+    gap: var(--hero-gap-mobile);
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+    gap: var(--hero-button-gap-mobile);
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-top: 1rem;
+  }
+
+  .hero-buttons .btn {
+    width: auto;
+    min-width: 200px;
+    max-width: 280px;
+  }
+
+  .align-under-pras {
+    padding-left: var(--hero-align-pras-mobile);
+  }
+
+  .align-under-sharma {
+    padding-left: var(--hero-align-sharma-mobile);
+  }
+
+  .hero-circle {
+    order: -1;
+    margin-bottom: 2rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .hero-wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+    gap: var(--hero-gap-desktop);
+  }
+
+  .hero-content {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    align-items: flex-start;
+    gap: var(--hero-gap-desktop);
+  }
+
+  .align-under-pras {
+    padding-left: var(--hero-align-pras-desktop);
+  }
+
+  .align-under-sharma {
+    padding-left: var(--hero-align-sharma-desktop);
+  }
+}
+
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #111;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--purple);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--blue);
+}
+
+/* Smooth scroll behavior */
 html {
-  overscroll-behavior: none;
+  scroll-behavior: smooth;
 }
