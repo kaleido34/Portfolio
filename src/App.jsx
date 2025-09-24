@@ -143,7 +143,8 @@ function App() {
       {/* Projects */}
       <section className="section-padding bg-black">
         <div className="container-custom">
-          <h2 className="text-3xl font-bold text-center mb-12">My Projects</h2>
+          <h2 className="text-3xl font-bold text-center mb-2">My Projects</h2>
+          <p className="text-center text-blue mb-10">A showcase of my web development journey, featuring full-stack applications and landing pages.</p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
             {visibleProjects.map((project) => (
@@ -178,10 +179,11 @@ function App() {
           </div>
 
           <div className="text-center">
+            
             {showAllProjects ? (
               <button
                 onClick={() => setShowAllProjects(false)}
-                className="btn btn-primary"
+                className="btn btn-primary "
               >
                 Show Less
               </button>
@@ -193,7 +195,13 @@ function App() {
                 Check All
               </button>
             )}
+            {showAllProjects && (
+              <p className="mt-4 text-neutral-300">
+                Check more cool projects <a href="https://github.com/kaleido34" target="_blank" rel="noopener noreferrer" className="text-purple underline-offset-4 hover:underline">here</a>.
+              </p>
+            )}
           </div>
+          
         </div>
       </section>
 
