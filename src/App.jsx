@@ -6,49 +6,57 @@ function App() {
   const projects = [
     {
       id: 1,
-      title: "Logistic Regression Model",
-      description: "Python, NumPy, Pandas, Matplotlib, scikit-learn baseline",
-      image: "/project1.png",
-      liveUrl: "https://huggingface.co/spaces/Prashant5504/Logistic-Regression",
-      details: "Custom logistic regression model with advanced preprocessing and visualization."
+      title: "RideShare",
+      description: "Websockets, Graphql, Djikstra's Algorithm, Greedy, Heap, AI Agent",
+      image: "/project7.png",
+      liveUrl: "Coming Soon",
+      details: "A real time ride sharing app like uber or ola."
     },
     {
       id: 2,
       title: "Noise2Nectar",
       description: "Next.js, React, TypeScript, Tailwind, Prisma, Zustand, Supabase, Tesseract.js, Google AI SDK",
-      image: "/project2.png",
+      image: "/project6.png",
       liveUrl: "https://n2-n-p6bd.vercel.app",
       details: "A comprehensive AI-powered platform that converts audio noise into structured data insights."
     },
     {
       id: 3,
+      title: "Logistic Regression Model",
+      description: "Python, NumPy, Pandas, Matplotlib, scikit-learn baseline",
+      image: "/project5.png",
+      liveUrl: "https://huggingface.co/spaces/Prashant5504/Logistic-Regression",
+      details: "Custom logistic regression model with advanced preprocessing and visualization."
+    },
+    {
+      id: 4,
       title: "FitMate",
       description: "React, JavaScript, JWT, Node.js, Express, MongoDB, NPM, REST API",
-      image: "/project3.png",
+      image: "/project4.png",
       liveUrl: "https://fitmate-frontend-kappa.vercel.app/",
       details: "Full-stack fitness application with authentication and progress tracking."
     },
     {
-      id: 4,
+      id: 5,
       title: "NewsBoard",
       description: "HTML5, CSS3, JavaScript, Vanilla-Js, News Api",
-      image: "/project4.png",
+      image: "/project3.png",
       liveUrl: "https://news-board-gilt.vercel.app",
       details: "News website with a clean and modern design using GNews Api."
     },
     {
-      id: 5,
+      id: 6,
       title: "WordNest",
       description: "Express, Node, Mongo Db, Rest Api, Ejs ",
-      image: "/project5.png",
+      image: "/project2.png",
       liveUrl: "https://word-nest-rose.vercel.app",
       details: "A React-based vocabulary app with Node.js backend and MongoDB database support."
     },
     {
-      id: 6,
+      id: 7,
       title: "LandForm",
       description: "Html, Css, JavaScript",
-      image: "/project6.png",
+      image: "/project1.png",
       liveUrl: "https://landform-gold.vercel.app/",
       details: "Checkout this cool modern landing page made using HTML, Css and a little bit of Javascript."
     }
@@ -165,14 +173,20 @@ function App() {
                   <p className="text-neutral-300 text-sm mb-3">{project.description}</p>
                   <p className="text-neutral-400 text-xs mb-4">{project.details}</p>
 
-                  <a
-                    href={project.liveUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-purple underline-offset-4 hover:underline"
-                  >
-                    View Live Project →
-                  </a>
+                  {project.liveUrl === "Coming Soon" ? (
+                    <span className="text-neutral-500 italic">
+                      Coming Soon
+                    </span>
+                  ) : (
+                    <a
+                      href={project.liveUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-purple underline-offset-4 hover:underline"
+                    >
+                      View Live Project →
+                    </a>
+                  )}
                 </div>
               </div>
             ))}
