@@ -82,14 +82,12 @@ function App() {
     { name: 'TailwindCSS', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg' },
   ];
 
-  const handleDownloadResume = () => {
-    const resumeUrl = '/resume.pdf'; // place your resume in /public/resume.pdf
-    const link = document.createElement('a');
-    link.href = resumeUrl;
-    link.download = 'Prashant_Sharma_Resume.pdf';
-    document.body.appendChild(link);
-    link.click();
-    link.remove();
+  const handleViewResume = () => {
+    // Replace this URL with your Google Drive shareable link
+    // To get this link: Upload resume to Google Drive → Right click → Get link → Change to "Anyone with the link can view"
+    // Then replace FILE_ID in the URL below with your actual file ID from the Google Drive link
+    const googleDriveViewUrl = 'https://drive.google.com/file/d/1jxmYDbz_6PUt8oAsqRheMF-VuDwpLWJO/view?usp=drive_link';
+    window.open(googleDriveViewUrl, '_blank');
   };
 
   const handleContactScroll = () => {
@@ -112,7 +110,7 @@ function App() {
               </h1>
               <p className="hero-role text-[22px] align-under-sharma">Full-stack developer</p>
               <div className="hero-buttons">
-                <button onClick={handleDownloadResume} className="btn btn-primary min-w-[200px]">
+                <button onClick={handleViewResume} className="btn btn-primary min-w-[200px]">
                   Resume
                 </button>
                 <button onClick={handleContactScroll} className="btn btn-secondary min-w-[220px]">
